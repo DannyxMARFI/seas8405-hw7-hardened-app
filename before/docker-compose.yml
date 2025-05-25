@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+    - 127.0.0.1:5000:5000      # only accessible from localhost
+    environment:
+    - APP_PASSWORD=${APP_PASSWORD}
+    read_only: true
+    security_opt:
+    - no-new-privileges:true
+    mem_limit: 256m
+    pids_limit: 100
+    restart: unless-stopped
